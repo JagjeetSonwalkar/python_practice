@@ -1,5 +1,5 @@
 
-class Node:
+class BinaryTreeNode:
     def __init__(self, data):
         self.left = None
         self.data = data
@@ -8,60 +8,62 @@ class Node:
 class BinaryTree:
     def __init__(self):
         self.root = None
+        self.count_node = 0
     
     # insert the node
     def insert(self, data):
-        data = str(data)
-        
-        if self.root is None:
-            self.root = Node(data)
-            return 
-        
-        current_node = self.root
+        new_node = BinaryTreeNode(data)
 
-        while True:
-            if data == current_node.data:
-                return
-            
-            elif data < current_node.data:
-                if current_node.left is None:
-                    current_node.left = Node(data)
-                    return
-                current_node = current_node.left
-            
+        if self.root is None:
+            self.root = new_node
+            self.count_node += 1
+            return True
+        else:
+            self._insert_recervsion(self.root, new_node)
+
+    def _insert_recervsion(self, current, new_node):
+        if current.left is None:
+            current.left = new_node
+            self.count_node += 1
+            return True
+        elif current.right is None:
+            current.right = new_node
+            self.count_node += 1
+            return True
+        else:
+            inserted = self._insert_recervsion(current.left, new_node)
+            if inserted:
+                return True
             else:
-                if current_node.right is None:
-                    current_node.right = Node(data)
-                    return
-                current_node = current_node.right
+                self._insert_recervsion(current.right, new_node)
     
-    # display BT - inorder
-    def inorder(self, root = None):
-        if root is None:
-            root = self.root
-        if root is None:
+    # display tree in inorder way
+    def inorder(self, node = None):
+        if node is None:
+            node = self.root
+        
+        if node is None:
             return
         
-        if root.left:
-            self.inorder(root.left)
-        print(f"({root.data})", end=" ")
-        if root.right:
-            self.inorder(root.right)
-
+        if node.left:
+            self.inorder(node.left)
+        print(f"('{node.data}')",end = "")
+        if node.right:
+            self.inorder(node.right)
+    
+    
 def main():
     tree = BinaryTree()
 
     tree.insert(10)
     tree.insert(20)
-    tree.insert(10)
     tree.insert(30)
-    tree.insert(40)
-    tree.insert(50)
-    tree.insert("jack")
 
     tree.inorder()
 
 
-
 if __name__ == "__main__":
     main()
+
+
+        

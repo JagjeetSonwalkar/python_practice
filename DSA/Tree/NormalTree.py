@@ -34,6 +34,7 @@ class Tree:
         return 1 + self.count_nodes(node.left) + self.count_nodes(node.right)
 
 def main():
+    pass
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% block start %}
+
+<h1>Team Squard: </h1>
+
+<table>
+    <tr>
+        <th>S_No.</th>
+        <th>Player_Name</th>
+        <th>Jersey_No</th>
+    </tr>
+    {% for player in squard %}
+    <tr>  
+        <td>{{forloop.counter}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.jersey_no}}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<a href="/">Home</a>
+
+
+{% endblock %}

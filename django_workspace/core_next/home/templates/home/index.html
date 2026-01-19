@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block start %}
+
+<table>
+    <tr>
+        <th>Playing_Position</th>
+        <th>Player_Name</th>
+        <th>Jersey_No</th>
+    </tr>
+    {%for player in playing_11%}
+    <tr>  
+        <td>{{forloop.counter}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.jersey_no}}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<a href="/squard/">Squard</a>
+  
+{% endblock %}

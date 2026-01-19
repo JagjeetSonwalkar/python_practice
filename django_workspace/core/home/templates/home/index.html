@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block start %}
+
+<h1>This template is return by Django server</h1>
+<h2>This is index page</h2>
+
+<a href="/contact/">contact</a>
+|
+<a href="/about/">about</a>
+
+<table class="container">
+    <tr>
+        <th>S.NO</th>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>Can vote?</th>
+    </tr>
+    
+    {% for people in peoples %}
+
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{people.name}}</td>
+        <td>{{people.age}}</td>
+        <td>
+            {% if people.age >= 18%}
+            👍
+            {% else %}
+            👎
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>{{text|truncatechars:80}}</p>
+
+<p>
+    {% if "cucumber" in vegetables %}
+        Yes, Avaiable
+    {% else %}
+        NO, NOT_Avaiable
+    {%endif%}
+</p>
+
+{% endblock %}

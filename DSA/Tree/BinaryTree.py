@@ -1,4 +1,4 @@
-# Binary Tree
+# Binary Search Tree (BST)
 
 class BinaryTreeNode:
     def __init__(self, data):
@@ -166,7 +166,7 @@ class BinaryTree:
 
         # Empty tree or subtree
         if current_node is None:
-            return 0
+            return -1
 
         # Compute height of left and right subtrees
         left_height = self.height(current_node.left, False)

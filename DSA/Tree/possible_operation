@@ -1,0 +1,19 @@
+Check	        Description
+Is Empty	    Tree has no nodes
+Is Leaf     	Node has no children
+Is Full	        Each node has 0 or 2 children
+Is Complete	    All levels filled except possibly last
+Is Perfect	    All internal nodes have 2 children & leaves at same level
+Is Balanced	    Height difference ≤1 (AVL condition)
+Is BST	        Valid Binary Search Tree
+Is Heap	        Valid Heap property
+Is Symmetric	Mirror image tree
+Is Skewed	    All nodes have only one child
+
+Operation	            Description
+Find Parent	            Parent of a node
+Find Children	        Children of a node
+Find Siblings	        Nodes with same parent
+Find Ancestors	        All ancestors of a node
+Find Descendants	    All children, grandchildren, etc.
+Lowest Common Ancestor (LCA)	Common ancestor closest to nodes

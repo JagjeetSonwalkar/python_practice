@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">Login</h2>
+        {% if form.non_field_errors %}
+        <small class="text-danger">
+            {{ form.non_field_errors.as_ul }}
+        </small>
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{form.username.name}}">Username</label>
+                <input type="text" name="{{form.username.name}}" class="form-control" value="{{form.username.value}}">
+                <span class="text-danger">{{form.username.errors}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="{{form.password.name}}">Password</label>
+                <input type="password" name="{{form.password.name}}" class="form-control" value="{{form.password.value}}">
+                <span class="text-danger">{{form.password1.errors}}</span>
+            </div>
+            
+            <button type="submit" class="btn btn-dark">Login</button>
+
+            <a href="{% url 'register' %}" class="btn btn-default">Create New account</a>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

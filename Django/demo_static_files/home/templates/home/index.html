@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block start %}
+
+<img src="{% static 'home/images/main_logo.png' %}" alt="logo" width="150">
+
+<h2>Welcome Home</h2>
+<p>Hello {{name}}</p>
+
+<div class="container">
+
+    <h1>Welcome</h1>
+
+    <button id="myBtn">Click Me</button>
+
+    <p id="result"></p>
+
+</div>
+
+
+{% endblock %}

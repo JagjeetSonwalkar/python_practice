@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}  templates {% endblock %}
+
+{% block content %}
+
+{% comment %} regroup {% endcomment %}
+
+{% regroup students by class_name as grouped_students %}
+
+<ul>
+    {% for group in grouped_students %}
+    <li>
+        <strong>Class {{ group.grouper }}</strong>
+
+        <ul>
+            {% for student in group.list %}
+                <li>{{ student.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+
+<p>Progress: {% widthratio 50 100 100 %}%</p>
+
+{% filter upper %}
+This text will be converted to uppercase
+{% endfilter %}
+
+{% endblock %}

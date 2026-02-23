@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} feedback {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'submit_contact' %}" method="post">
+    {% csrf_token %}
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" required> <br> <br>
+
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message" required> <br> <br>
+
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

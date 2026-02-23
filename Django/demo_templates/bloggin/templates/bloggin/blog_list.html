@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %} template {% endblock %}
+
+{% block content %}
+
+{% comment%} if elif else {% endcomment %}
+
+{% if blogs.0.is_featured %}
+    <h2>Featured blog: {{blogs.0.title}}</h2>
+{% else %}
+    <h2>No Featured blog: {{blogs.0.title}}</h2>
+{% endif %}
+
+<hr>
+{% comment%} for loop {% endcomment %}
+{% for blog in blogs %}
+    <li>{{forloop.counter}}. {{blog.title}} - {{blog.author}}</li>
+    {% empty %}
+    <li>No blogs available</li>
+{% endfor %}
+
+<hr>
+{% comment%} for loop {% endcomment %}
+{% with total_blogs=blogs|length %}
+<p>Total blogs: {{total_blogs}}</p>
+{% endwith %}
+
+<hr>
+{% comment%} Cycle {% endcomment %}
+<h2>Blog Table</h2>
+<table boder="1" celllpadding="5" cellspacing="0">
+    <tr>
+        <th>S.No.</th>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    {% for blog in blogs %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{blog.title}}</td>
+        <td>{{blog.author}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+{% comment%} Firstof {% endcomment %}
+<p>Author: {% firstof blog.1.author "JJJ" %}</p>
+
+<hr>
+{% comment%} verbatim: it will ignore {{}} variable and treat it as {{}} {% endcomment %}
+{% comment%} verbatim: ignore template parsing {% endcomment %}
+{% verbatim %}
+<p>Author: {{blog.1.author }}</p>
+{% endverbatim %}
+
+<hr>
+{% comment %} 
+autoescape: autoescape is a Django template feature that automatically protects your website from HTML injection and XSS attacks by escaping special 
+characters in variables. 
+It converts dangerous HTML characters into safe text.
+{% endcomment %}
+<p>autoescape on: {{html_code}}</p>
+
+<p>autoescape off: {{html_code|safe}}</p>
+{% autoescape off %}
+    <p>autoescape off: {{html_code}}</p>
+{% endautoescape %}
+
+{% endblock %}

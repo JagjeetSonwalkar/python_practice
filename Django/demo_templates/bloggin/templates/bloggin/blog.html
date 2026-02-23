@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} blog {% endblock %}
+
+{% block content %}
+
+{% comment%} Text Filter {% endcomment %}
+
+<p><b>Title (Normal)</b>: {{post.title}}</p>
+<p><b>Upper case</b>: {{post.title|upper}}</p>
+<p><b>Lower case</b>: {{post.title|lower}}</p>
+<p><b>Capital</b>: {{post.title|capfirst}}</p>
+<p><b>title case</b>: {{post.title|title}}</p>
+<p><b>TrancateChar</b>: {{post.title|truncatechars:20}}</p>
+<p><b>TrancateWord</b>: {{post.title|truncatewords:2}}</p>
+<p><b>title case</b>: {{post.title|linebreaks}}</p>
+
+<hr>
+
+{% comment%}Number Filter {% endcomment %}
+<p><b>origianl price:</b> {{post.price}}</p>
+<p><b>origianl price(+5):</b> {{post.price|add:5}}</p>
+
+{% if post.number|divisibleby:2 %}
+<p>{{post.number}} is Even</p>
+{% else %}
+<p>{{post.number}} is odd</p>
+{% endif %}
+
+<hr>
+{% comment %} List Filter {% endcomment %}
+<p><b>Post Tag: </b> {{post.tags}} </p>
+<p><b>first Tag: </b> {{post.tags|first}} </p>
+<p><b>last Tag: </b> {{post.tags|last}} </p>
+<p><b>total Tag: </b> {{post.tags|length}} </p>
+<p><b>Slice Tag: </b> {{post.tags|slice:":2"}} </p>
+
+<hr>
+<p><b>Author Avaliable? :</b> {{post.author|yesno:"yes,no,maybe"}}</p>
+<p><b>Comment Count: </b> {{post.comments_count}} Commnet{{post.comments_count|pluralize}}  </p>
+
+<hr>
+<p>post created at: {{post.created_at}} </p>
+<p>post formated date: {{post.created_at| date:"D d M Y"}} </p>
+<p>post created at time: {{post.created_at| time:"H:i"}} </p>
+
+<hr>
+{%comment%} encoding & Formaating {% endcomment %}
+<p><b>encoding: </b> {{post.title|urlencode}} </p>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} bloggin {% endblock %}
+
+{% block content %}
+
+{% comment %} This is multiline comment {% endcomment %}
+{# this is Single line comment #}
+
+{% comment %} Single Variable {% endcomment %}
+<p>Name: {{name}}</p>
+<p>Age: {{age}}</p>
+
+{% comment %} List access {% endcomment %}
+<p>Skills: {{skills}}</p>
+<p>Primary kilss: {{skills.0}}</p>
+
+{% comment %} Object Attributes {% endcomment %}
+<p>User Name: {{user.name}}</p>
+<p>User Age: {{user.age}} </p>
+
+{% comment %} Dict {% endcomment %}
+<p>blog Details</p>
+<p>Title: {{blog.title}}</p>
+<p>Created At: {{blog.created_at}}</p>
+<p>Content: {{blog.content}}</p>
+<p>Content: {{blog.content|safe}}</p>
+
+{% comment %} Default value {% endcomment %}
+<p>Default Empty Value: {{empty_value|default:"No Value provided"}}</p>
+<p>Default Empty Value: {{empty_value|default_if_none:"No Data"}}</p>
+
+{% endblock %}

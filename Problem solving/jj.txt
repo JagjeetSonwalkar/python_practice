@@ -1,0 +1,14 @@
+This file is created by python..
+
+ret = None
+    file_obj = Files("jj.txt")
+
+    # ret = file_obj.create_file()
+    if ret:
+        print("File is created or Already Exists")
+    else:
+        print("Unable to create the file!!")
+    
+    print("Reading the File...")
+    ret = file_obj.read_file()
+    print(ret)
